@@ -24,3 +24,18 @@ class Books(Library_Sys_Item):
         self.author = author
         self.genre = genre
         self.__available = True 
+
+    #get private
+    def getAvalilable(self):
+        return self.__available
+    
+    #Setter with validation
+    def setAvalilable(self, statuss):
+        if isinstance(statuss, bool):
+            self.__available = statuss
+        else:
+            print("The value must be True or False!!!")
+
+    def display(self):
+        status = "available" if self.__available else "seconded"
+        print(f" Id; {self.item_id} | The Title: {self.title} | The author: {self.author} | the year : {self.getYear()} | status; {status}")
