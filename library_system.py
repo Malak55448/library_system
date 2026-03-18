@@ -1,3 +1,5 @@
+import csv 
+import os 
 # My library system
 
 class Library_Sys_Item:
@@ -39,3 +41,10 @@ class Books(Library_Sys_Item):
     def display(self):
         status = "available" if self.__available else "seconded"
         print(f" Id; {self.item_id} | The Title: {self.title} | The author: {self.author} | the year : {self.getYear()} | status; {status}")
+
+# csv file 
+file_of_library = "library_data.csv"
+
+def saveBook(books):
+    with open(file_of_library, "w", newline= "", encoding= "utf-8") as f: # I wanted to try a file that supports both Arabic and English to improve myself more in programming.
+      pass
