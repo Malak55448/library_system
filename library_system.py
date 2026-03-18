@@ -46,5 +46,33 @@ class Books(Library_Sys_Item):
 file_of_library = "library_data.csv"
 
 def saveBook(books):
-    with open(file_of_library, "w", newline= "", encoding= "utf-8") as f: # I wanted to try a file that supports both Arabic and English to improve myself more in programming.
-      pass
+    with open(file_of_library, "w", newline= "", encoding= "utf-8") as file: # I wanted to try a file that supports both Arabic and English to improve myself more in programming.
+       writer = csv.writer(file)
+       writer.writerow(["item_id", "title", "year", "author", "gener", "available"])
+       for book in books:
+           writer.writerow([
+                book.item_id,
+                book.title,
+                book.getYear(),
+                book.author,
+                book.genre,
+                book.setAvalilable()          
+            ])
+           
+def loadBook():
+    our_books =[]
+    if not os.path.exists(file_of_library):
+        return our_books
+    with open(file_of_library, "r", encoding="utf-8") as file:
+        read = csv.DictReader(file)
+        for row in read:
+            book = Books(
+                row["item_id"],
+                row["title"],
+                int(row["year"]),
+                row["author"],
+                row["genre"]
+            )
+            book.setAvalilable(row["available"] == "True")
+            our_books.append(book)
+    return our_books  
