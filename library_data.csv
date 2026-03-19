@@ -1,2 +1,4 @@
 item_id,title,year,author,genre,available
 001,Harry Potter,2001,J.K Rowling,Fantasy,True
+002,The Alchemist,1988,Paulo Coelho,Novel,True
+003,Introduction to Algorithms,1990,Thomas Cormen,Programming,True
